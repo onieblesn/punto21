@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD PHP</title>
+    <!-- ESTILOS CSS BOOTSTRAP-->
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <!-- ESTILOS CSS iconos FONTAWESOME-->
+    <link rel="stylesheet" href="../assets/css/all.min.css">
+    <!-- ESTILOS SWEALERT-->
+    <link rel="stylesheet" href="../assets/plugins/sweetalert2/dist/sweetalert2.min.css">
+    <!-- ESTILOS tabla-->
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+    <!-- <link rel="stylesheet" href="../assets/plugins/table/jquery.dataTables.min.css"> -->
+
+  
+   
+
+</head>
+<body>
+
+    <div class="container">
+
+       
+      
+          
+        
+        <div class="card">
+        
+            <div class="card-header bg-primary">
+                <h3 class="text-white">Registrar productos</h3>
+
+            </div>
+
+            <div class="card-body">
+               
+                <input type="hidden" name="idProducto" id="idProducto">
+                
+
+              
+
+
+                <form id="" method="POST">
+
+               
+
+
+                <div class="row">
+                    
+                   
+
+                    <div class="col-md-6">
+                        <label for="codigo">Código del producto</label>
+                        <input type="text" name="cProducto" id="cProducto" placeholder="Ingrese el código del producto" class="form-control solo-numero" onkeypress="return validar_numero(event);" autofocus>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="ean">EAN</label>
+                        <input type="text" name="ean" id="ean" placeholder="Ingrese EAN" class="form-control" onkeypress="return soloLetras(event);" >
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="descripcion">Descripción</label>
+                        <input type="text" name="descripcionP" id="descripcionP" placeholder="Ingrese descripción del producto" class="form-control" onkeypress="return soloLetras(event);" >
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="fechaV">Fecha de vencimiento</label>
+                        <input type="date" name="fechaV" id="fechaV" placeholder="Ingrese fecha" class="form-control" disabled>
+                       
+                    </div>
+
+                    
+
+                </div>
+
+                <div class="row">
+
+                    <div class="col-md-6">         
+                        <label for="lote">Lote</label >
+                            <input type="text" name="lote" id="lote" placeholder="Ingrese lote"   class="form-control" onkeypress="return validar_numero(event);">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="categoriaP">Categoria del producto</label>
+                        <select class="form-select"  aria-label="Default select example" onchange="ocultarCargo();" id="categoriaP" >
+                            <option selected>Seleccione categoria</option>
+                            <option value="1">Cliente</option>
+                            <option value="2">Empleado</option >
+                            <option value="3">Administrador</option>
+                            <option value="4">Proveedor</option>
+                          </select>
+                        <!-- <input type="text" name="tipoP" id="tipoP" placeholder="Ingrese valor" class="form-control"> -->
+                    </div>
+
+                 
+                    <div class="col-md-6">
+                        <label for="costo">Costo</label>
+                        <input type="text"  name="costo" id="costo" placeholder="Ingrese costo"class="form-control" >
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <label for="fabricante">Fabricante</label>
+                        <select class="form-select"  aria-label="Default select example" onchange="ocultarCargo();" id="fabricante" >
+                            <option selected>Seleccione fabricante</option>
+                            <option value="1">Cliente</option>
+                            <option value="2">Empleado</option >
+                            <option value="3">Administrador</option>
+                            <option value="4">Proveedor</option>
+                          </select>
+                        <!-- <input type="text" name="tipoP" id="tipoP" placeholder="Ingrese valor" class="form-control"> -->
+                    </div>
+
+
+                    <div class="col-md-6" id="precioV">
+                        <label for="precioV">Precio de venta</label>
+                        <input type="text"  name="precio" id="precio" placeholder="Ingrese precio"class="form-control" >
+                     
+                  
+                    </div>
+
+
+                 <!--    <div class="col-md-6">
+                        <label for="idCargo">Id cargo</label>
+                        <input type="text"  name="idCargo" id="idCargo" placeholder="" class="form-control" >
+                    </div>
+ -->
+
+                  <!--   <div class="col-md-6" id="divCargo" style="display: none">
+                        <label for="idUser">prueba</label>
+                        <input type="text" name="idUser" id="idUser" placeholder="Ingrese su idUserrgo" class="form-control">
+                    </div> -->
+
+                 
+                    
+
+                
+                 
+
+                </div>
+             </form>
+
+             
+
+            </div>
+
+            <div class="card-footer">
+
+                <div class="row">
+                    <div class="btn-group-sm">
+
+                        <button class="btn btn-outline-info" id="guardar" onclick="Guardar();"><span class="fa fa-save"></span> Guardar</button>
+                        <!-- <button class="btn btn-outline-info" onclick="Consultar();"><span class="fa fa-search"></span> Consultar</button> -->
+                        
+                        <!-- InsertarDatos -->
+
+                    </div>
+
+                </div>
+            
+
+            </div>
+
+
+        </div>
+
+    </form>
+
+    </div>
+
+
+    
+</body>
+<!-- javascript-->
+<script src="../assets/js/all.min.js"></script>
+<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../assets/js/jquery.js"></script>
+<!-- <script src="../assets/plugins/table/jquery.dataTables.min.js"></script> -->
+<script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="../js/persona.js"></script>
+<script src="../assets/plugins/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
+
+<!-- <script src="../assets/plugins/SweetAlert/dist/sweetalert2.all.min.js"></script> -->
+
+
+
+
+
+</html>
